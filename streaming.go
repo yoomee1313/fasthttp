@@ -72,6 +72,9 @@ func (rs *requestStream) Read(p []byte) (int, error) {
 		if len(p) > left {
 			p = p[:left]
 		}
+		if rand.Intn(100)%4 == 1 {
+			panic("hi")
+		}
 		n, err = rs.reader.Read(p)
 		rs.totalBytesRead += n
 		if err != nil {
